@@ -11,7 +11,10 @@ let isListening = false; // Flag to prevent multiple recognition instances
 // Map for speech-to-sign translation (adjust as needed)
 const phraseMap = {
   "good morning": ["good-morning.gif"],
-  "how are you": ["how are you.gif"]
+  "how are you": ["how are you.gif"],
+  "thank you": ["thank you.gif"],
+  "whats your name": ["whats your name.gif"],
+  "my name is": ["my name is"],
 };
 
 const wordMap = {
@@ -19,7 +22,9 @@ const wordMap = {
   "you": "you.gif",
   "would": "would.gif",
   "like": "like.gif",
-  "milk": "milk.gif"
+  "milk": "milk.gif",
+  "where": "where.gif",
+  "today": "today.gif",
 };
 
 // Function to display signs based on recognized speech
