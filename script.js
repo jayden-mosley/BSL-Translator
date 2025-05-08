@@ -12,7 +12,7 @@ recognition.continuous = false;
 const mapPhrases = {
   "how are you": ["how-are-you.gif"],
   "good morning": ["good-morning.gif"],
-  "whats your name": ["whats-your-name.gif],
+  "whats your name": ["whats-your-name.gif"],
   "my name is": ["my-name-is.gif"],
   "thank you": ["thank-you.gif"]
 };
