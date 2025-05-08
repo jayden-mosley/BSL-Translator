@@ -24,24 +24,6 @@ const signMap = {
   "today": ["today.gif"]
 };
 
-// Press to speak
-speakBtn.addEventListener("click", () => {
-  transcript.textContent = "🎙️ Listening...";
-  recognition.start();
-});
-
-// On successful recognition
-recognition.onresult = function (event) {
-  const speech = event.results[0][0].transcript.toLowerCase();
-  transcript.textContent = `You said: "${speech}"`;
-  showSigns(speech);
-};
-
-// On error
-recognition.onerror = function (event) {
-  transcript.textContent = `❌ Error: ${event.error}`;
-};
-
 // Display matching signs
 function showSigns(spokenText) {
   output.innerHTML = "";
@@ -68,3 +50,21 @@ function showSigns(spokenText) {
     output.innerHTML = "<p>No matching signs found.</p>";
   }
 }
+
+// Press to speak
+speakBtn.addEventListener("click", () => {
+  transcript.textContent = "🎙️ Listening...";
+  recognition.start();
+});
+
+// On successful recognition
+recognition.onresult = function (event) {
+  const speech = event.results[0][0].transcript.toLowerCase();
+  transcript.textContent = `You said: "${speech}"`;
+  showSigns(speech);
+};
+
+// On error
+recognition.onerror = function (event) {
+  transcript.textContent = `❌ Error: ${event.error}`;
+};
