@@ -57,15 +57,11 @@ button {
   text-align: center;
 }
 
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;       /* Center horizontally */
-  justify-content: center;   /* Center vertically if you want */
-  min-height: 100vh;         /* Full screen height */
-  padding: 20px;
-  box-sizing: border-box;
-  text-align: center;
+.footer { 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    z-index: 10;
 }
 
 @keyframes pulse {
