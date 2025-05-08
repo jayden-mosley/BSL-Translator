@@ -48,25 +48,6 @@ form {
   text-align: center;
 }
 
-.alphabet-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  justify-items: center;
-}
-
-.alphabet-grid img {
-  width: 80px;
-  height: auto;
-  border-radius: 10px;
-  transition: transform 0.2s;
-}
-
-.alphabet-grid img:hover {
-  transform: scale(1.1);
-}
-
 input, button {
   padding: 10px;
   border: 1px solid #ccc;
@@ -110,4 +91,23 @@ input, textarea, button {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
+}
+
+.alphabet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.alphabet-grid img {
+  width: 80px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.alphabet-grid img:hover {
+  transform: scale(1.1);
 }
