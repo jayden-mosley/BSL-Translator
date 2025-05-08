@@ -37,6 +37,7 @@ speakBtn.addEventListener("click", () => {
 
 // When speech is recognized
 recognition.onresult = function (event) {
+  micIndicator.classList.add("hidden"); // Hide mic indicator
   const spokenText = event.results[0][0].transcript.toLowerCase().trim();
   transcript.textContent = `You said: "${spokenText}"`;
   showSigns(spokenText);
