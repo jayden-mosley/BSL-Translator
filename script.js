@@ -1,6 +1,7 @@
 const speakBtn = document.getElementById("speak-btn");
 const transcript = document.getElementById("transcript");
 const output = document.getElementById("sign-output");
+const micIndicator = document.getElementById("mic-indicator");
 
 // Speech recognition setup
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
@@ -30,6 +31,7 @@ const mapWords = {
 // Click to start listening
 speakBtn.addEventListener("click", () => {
   transcript.textContent = "🎙️ Listening...";
+  micIndicator.classList.remove("hidden"); // Show mic indicator
   recognition.start();
 });
 
