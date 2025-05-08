@@ -10,14 +10,24 @@ let isListening = false; // Flag to prevent multiple recognition instances
 
 // Map for speech-to-sign translation (adjust as needed)
 const phraseMap = {
-  "would you like milk": ["would.gif", "you.gif", "like.gif", "milk.gif"],
-  "hello how are you": ["hello.gif", "how are you.gif"],
-  "good morning": ["good morning.gif"]
+  "good morning": ["good-morning.gif"],
+  "how are you": ["how are you.gif"]
+};
+
+const wordMap = {
+  "hello": "hello.gif",
+  "you": "you.gif",
+  "would": "would.gif",
+  "like": "like.gif",
+  "milk": "milk.gif"
 };
 
 // Function to display signs based on recognized speech
 function showSigns(spokenText) {
-  output.innerHTML = ""; // Clear previous signs
+  output.innerHTML = "";
+  spokenText = spokenText.toLowerCase().trim();
+
+  // Full phrase match
   if (phraseMap[spokenText]) {
     phraseMap[spokenText].forEach(gif => {
       const img = document.createElement("img");
@@ -25,8 +35,25 @@ function showSigns(spokenText) {
       img.alt = gif.replace(".gif", "");
       output.appendChild(img);
     });
-  } else {
-    output.innerHTML = "<p>No sign translation found.</p>";
+    return;
+  }
+
+  // Fallback: word-by-word matching
+  const words = spokenText.split(" ");
+  let foundAny = false;
+
+  words.forEach(word => {
+    if (wordMap[word]) {
+      const img = document.createElement("img");
+      img.src = `signs/${wordMap[word]}`;
+      img.alt = word;
+      output.appendChild(img);
+      foundAny = true;
+    }
+  });
+
+  if (!foundAny) {
+    output.innerHTML = "<p>No sign translations found.</p>";
   }
 }
 
