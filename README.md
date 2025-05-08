@@ -19,6 +19,7 @@ This is a simple web-based prototype that translates spoken English phrases into
 ```bash
 git clone https://github.com/your-username/speech-to-sign.git
 cd speech-to-sign
+```
 
 ### 2. Open in Browser (Best with Chrome)
 You can open index.html directly in a browser or host it with GitHub Pages.
@@ -34,8 +35,9 @@ To add more speech-to-sign translations:
 Save your sign language GIFs into the /signs/ folder.
 
 Update the phraseMap object in script.js, like this:
-
+```bash
 const phraseMap = {
   "would you like milk": ["would.gif", "you.gif", "like.gif", "milk.gif"],
   "good morning": ["good.gif", "morning.gif"]
 };
+```bash
