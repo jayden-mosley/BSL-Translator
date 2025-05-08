@@ -30,6 +30,7 @@ const mapWords = {
 // Click to start listening
 speakBtn.addEventListener("click", () => {
   transcript.textContent = "🎤 Listening...";
+  transcript.classList.add("pulsing");
   recognition.start();
 });
 
@@ -40,8 +41,13 @@ recognition.onresult = function (event) {
   showSigns(spokenText);
 };
 
+recognition.onend = function () {
+  transcript.classList.remove("pulsing"); // Remove pulsing effect from transcript
+};
+
 // On recognition error
 recognition.onerror = function (event) {
+  transcript.classList.remove("pulsing");
   transcript.textContent = `❌ Error: ${event.error}`;
 };
 
