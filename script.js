@@ -11,8 +11,8 @@ let isListening = false; // Flag to prevent multiple recognition instances
 // Map for speech-to-sign translation (adjust as needed)
 const phraseMap = {
   "would you like milk": ["would.gif", "you.gif", "like.gif", "milk.gif"],
-  "hello how are you": ["hello.gif", "how.gif", "are.gif", "you.gif"],
-  "good morning": ["good.gif", "morning.gif"]
+  "hello how are you": ["hello.gif", "how are you.gif"],
+  "good morning": ["good morning.gif"]
 };
 
 // Function to display signs based on recognized speech
