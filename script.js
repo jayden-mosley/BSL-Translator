@@ -9,22 +9,19 @@ let recognition;
 let isListening = false; // Flag to prevent multiple recognition instances
 
 // Map for speech-to-sign translation (adjust as needed)
-const phraseMap = {
+const signMap = {
+  "hello": ["hello.gif"],
+  "how are you": ["how.gif", "are.gif", "you.gif"],
   "good morning": ["good-morning.gif"],
-  "how are you": ["how are you.gif"],
   "thank you": ["thank you.gif"],
   "whats your name": ["whats your name.gif"],
   "my name is": ["my name is"],
-};
-
-const wordMap = {
-  "hello": "hello.gif",
-  "you": "you.gif",
-  "would": "would.gif",
-  "like": "like.gif",
-  "milk": "milk.gif",
+  "would": ["would.gif"],
+  "you": ["you.gif"],
+  "like": ["like.gif"],
+  "milk": ["milk.gif"],
   "where": "where.gif",
-  "today": "today.gif",
+  "today": "today.gif"
 };
 
 // Function to display signs based on recognized speech
@@ -32,36 +29,29 @@ function showSigns(spokenText) {
   output.innerHTML = "";
   spokenText = spokenText.toLowerCase().trim();
 
-  // Full phrase match
-  if (phraseMap[spokenText]) {
-    phraseMap[spokenText].forEach(gif => {
-      const img = document.createElement("img");
-      img.src = `signs/${gif}`;
-      img.alt = gif.replace(".gif", "");
-      output.appendChild(img);
-    });
-    return;
-  }
+  let matched = false;
 
-  // Fallback: word-by-word matching
-  const words = spokenText.split(" ");
-  let foundAny = false;
+  // 1. Try to match full phrases first (longest keys first)
+  const sortedKeys = Object.keys(signMap).sort((a, b) => b.length - a.length);
 
-  words.forEach(word => {
-    if (wordMap[word]) {
-      const img = document.createElement("img");
-      img.src = `signs/${wordMap[word]}`;
-      img.alt = word;
-      output.appendChild(img);
-      foundAny = true;
+  sortedKeys.forEach(key => {
+    if (spokenText.includes(key)) {
+      signMap[key].forEach(gif => {
+        const img = document.createElement("img");
+        img.src = `signs/${gif}`;
+        img.alt = key;
+        output.appendChild(img);
+      });
+      matched = true;
+      // Remove matched part to avoid double matching
+      spokenText = spokenText.replace(key, "");
     }
   });
 
-  if (!foundAny) {
-    output.innerHTML = "<p>No sign translations found.</p>";
+  if (!matched) {
+    output.innerHTML = "<p>No matching signs found.</p>";
   }
 }
-
 // Press and hold functionality for mic button
 speakBtn.addEventListener("mousedown", () => {
   if (isListening) return; // Prevent starting recognition if already listening
