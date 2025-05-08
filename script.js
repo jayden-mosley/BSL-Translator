@@ -14,8 +14,11 @@ const mapPhrases = {
   "good morning": ["good-morning.gif"],
   "what's your name": ["whats-your-name.gif"],
   "my name is": ["my-name-is.gif"],
-  "thank you": ["thank-you.gif"]
-};
+  "thank you": ["thank-you.gif"],
+  "can i help you": ["can-i-help-you],
+  "how much": ["how-much"],
+  "sign language": ["sign-language"],
+ };
 
 const mapWords = {
   "hello": "hello.gif",
@@ -25,6 +28,31 @@ const mapWords = {
   "milk": "milk.gif",
   "where": "where.gif",
   "today": "today",
+  "air": "air.gif",
+  "allergic": "allergic.gif",
+  "bread": "bread.gif",
+  "can": "can.gif",
+  "car": "car",
+  "cheese": "cheese.gif",
+  "coffee": "coffee.gif",
+  "come": "come.gif",
+  "do": "do",
+  "help": "help.gif",
+  "i": "i.gif",
+  "know": "know.gif",
+  "money": "money.gif",
+  "need": "need",
+  "new": "new.gif",
+  "or": "or.gif",
+  "phone": "phone.gif",
+  "tea": "tea",
+  "time": "time.gif",
+  "translate": "translate.gif",
+  "want": "want.gif",
+  "what": "what.gif",
+  "when": "when",
+  "will": "will.gif",
+  "with": "with.gif",
 };
 
 // Click to start listening
