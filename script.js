@@ -8,7 +8,7 @@ const phraseMap = {
 
 speakBtn.addEventListener("click", () => {
   const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-  recognition.lang = "en-US";
+  recognition.lang = "en-UK";
   recognition.start();
 
   recognition.onresult = function(event) {
