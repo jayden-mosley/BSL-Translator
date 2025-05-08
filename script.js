@@ -30,7 +30,7 @@ const mapWords = {
 
 // Click to start listening
 speakBtn.addEventListener("click", () => {
-  transcript.textContent = "🎙️ Listening...";
+  //transcript.textContent = "🎙️ Listening...";
   micIndicator.classList.remove("hidden"); // Show mic indicator
   recognition.start();
 });
@@ -44,6 +44,7 @@ recognition.onresult = function (event) {
 
 // On recognition error
 recognition.onerror = function (event) {
+  micIndicator.classList.add("hidden"); // Hide mic indicator
   transcript.textContent = `❌ Error: ${event.error}`;
 };
 
