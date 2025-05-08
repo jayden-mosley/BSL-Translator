@@ -51,6 +51,18 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;         /* Full screen height */
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* Center horizontally */
+  justify-content: center;   /* Center vertically if you want */
+  min-height: 100vh;         /* Full screen height */
   padding: 20px;
   box-sizing: border-box;
   text-align: center;
