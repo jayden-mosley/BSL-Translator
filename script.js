@@ -1,7 +1,6 @@
 const speakBtn = document.getElementById("speak-btn");
 const transcript = document.getElementById("transcript");
 const output = document.getElementById("sign-output");
-const micIndicator = document.getElementById("mic-indicator");
 
 // Speech recognition setup
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
@@ -30,14 +29,12 @@ const mapWords = {
 
 // Click to start listening
 speakBtn.addEventListener("click", () => {
-  //transcript.textContent = "🎙️ Listening...";
-  micIndicator.classList.remove("hidden"); // Show mic indicator
+  transcript.textContent = "🎤 Listening...";
   recognition.start();
 });
 
 // When speech is recognized
 recognition.onresult = function (event) {
-  micIndicator.classList.add("hidden"); // Hide mic indicator
   const spokenText = event.results[0][0].transcript.toLowerCase().trim();
   transcript.textContent = `You said: "${spokenText}"`;
   showSigns(spokenText);
@@ -45,7 +42,6 @@ recognition.onresult = function (event) {
 
 // On recognition error
 recognition.onerror = function (event) {
-  micIndicator.classList.add("hidden"); // Hide mic indicator
   transcript.textContent = `❌ Error: ${event.error}`;
 };
 
