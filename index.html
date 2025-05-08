@@ -11,8 +11,15 @@
     <h1>Speech to British Sign Language</h1>
     <button id="speak-btn">🎙️ Speak</button>
     <p>Hello, welcome to the BSL Translator, we are currently in our prototype phase and our currently only working with common and useful phrases for clear communication and accessibility. Our goals are to have a fully functioning application that is user friendly and fun. Feel free to email us to add phrases and we will try to update as we go.</p>
-    <h2>Contact Me</h2>
-    <container>
+    <div id="mic-indicator" class="hidden">🎤 Listening...</div>
+    <p id="transcript"></p>
+    <div id="sign-output"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</footer>
+  <h2>Contact Me</h2>
+    <center-container>
 <form id="contact-form" action="mailto:himymjayden70@gmail.com" method="POST" enctype="text/plain">
   <label for="username">Name:</label>
   <input type="text" id="username" name="username" required>
@@ -25,11 +32,6 @@
 
   <button type="submit">Send</button>
 </form>
-      </container>
-    <div id="mic-indicator" class="hidden">🎤 Listening...</div>
-    <p id="transcript"></p>
-    <div id="sign-output"></div>
-  </div>
-  <script src="script.js"></script>
-</body>
+    </center-container>
+</footer>
 </html>
