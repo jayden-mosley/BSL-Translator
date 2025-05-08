@@ -35,15 +35,15 @@ button {
   margin: 0.5rem;
 }
 
-#transcript {
-  font-size: 1.2rem;
-  color: green;
-  margin-top: 10px;
-  animation: pulse 1s infinite;
+#transcript.pulsing {
+  color: #4caf50;  /* Green text */
+  animation: pulse 1s infinite;  /* Pulsing effect */
 }
 
-.hidden {
-  display: none;
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
 }
 
 .center-wrapper {
@@ -60,10 +60,4 @@ input, textarea, button {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
-}
-
-@keyframes pulse {
-  0% { opacity: 0.3; }
-  50% { opacity: 1; }
-  100% { opacity: 0.3; }
 }
