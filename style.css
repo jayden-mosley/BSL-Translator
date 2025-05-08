@@ -8,7 +8,25 @@ body {
   max-width: 600px;
   margin: auto;
 }
+
 #sign-output img {
   height: 150px;
   margin: 0.5rem;
+}
+
+#mic-indicator {
+  font-size: 1.2rem;
+  color: green;
+  margin-top: 10px;
+  animation: pulse 1s infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
 }
