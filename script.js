@@ -103,8 +103,3 @@ speakBtn.addEventListener("mouseleave", () => {
     recognition.stop(); // Stop recognition if mouse leaves the button while holding
   }
 });
-
-// On error
-recognition.onerror = function (event) {
-  transcript.textContent = `⚠️ Error: ${event.error}`;
-};
