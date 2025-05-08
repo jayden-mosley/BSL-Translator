@@ -41,9 +41,11 @@ body {
 form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 300px;
+  align-items: center;
+  justify-content: start;
+  min-height: 100vh;
+  padding: 30px;
+  text-align: center;
 }
 
 input, button {
