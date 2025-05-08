@@ -17,7 +17,7 @@ const mapPhrases = {
   "thank you": ["thank-you.gif"],
   "can i help you": ["can-i-help-you],
   "how much": ["how-much"],
-  "sign language": ["sign-language"],
+  "sign language": ["sign-language"]
  };
 
 const mapWords = {
@@ -52,7 +52,7 @@ const mapWords = {
   "what": "what.gif",
   "when": "when",
   "will": "will.gif",
-  "with": "with.gif",
+  "with": "with.gif"
 };
 
 // Click to start listening
