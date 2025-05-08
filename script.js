@@ -2,46 +2,72 @@ const speakBtn = document.getElementById("speak-btn");
 const transcript = document.getElementById("transcript");
 const output = document.getElementById("sign-output");
 
-// Set up Speech Recognition
+// Speech recognition setup
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 recognition.lang = "en-GB";
 recognition.interimResults = false;
 recognition.continuous = false;
 
-// Map for speech-to-sign translation (adjust as needed)
-const signMap = {
-  "hello": ["hello.gif"],
+// Phrase and word maps
+const mapPhrases = {
   "how are you": ["how-are-you.gif"],
   "good morning": ["good-morning.gif"],
-  "thank you": ["thank-you.gif"],
-  "whats your name": ["whats-your-name.gif"],
-  "my name is": ["my-name-is"],
-  "would": ["would.gif"],
-  "you": ["you.gif"],
-  "like": ["like.gif"],
-  "milk": ["milk.gif"],
-  "where": ["where.gif"],
-  "today": ["today.gif"]
+  "whats your name": ["whats-your-name.gif],
+  "my name is": ["my-name-is.gif"],
+  "thank you": ["thank-you.gif"]
 };
 
-// Display matching signs
+const mapWords = {
+  "hello": "hello.gif",
+  "would": "would.gif",
+  "you": "you.gif",
+  "like": "like.gif",
+  "milk": "milk.gif",
+  "where": "where.gif",
+  "today": "today",
+};
+
+// Click to start listening
+speakBtn.addEventListener("click", () => {
+  transcript.textContent = "🎙️ Listening...";
+  recognition.start();
+});
+
+// When speech is recognized
+recognition.onresult = function (event) {
+  const spokenText = event.results[0][0].transcript.toLowerCase().trim();
+  transcript.textContent = `You said: "${spokenText}"`;
+  showSigns(spokenText);
+};
+
+// On recognition error
+recognition.onerror = function (event) {
+  transcript.textContent = `❌ Error: ${event.error}`;
+};
+
+// Process text and display signs
 function showSigns(spokenText) {
   output.innerHTML = "";
   let matched = false;
-  spokenText = spokenText.toLowerCase();
 
-  const sortedKeys = Object.keys(signMap).sort((a, b) => b.length - a.length);
-
-  sortedKeys.forEach(key => {
-    const regex = new RegExp(`\\b${key}\\b`);
+  // Check for full phrase match
+  for (let phrase in mapPhrases) {
+    const regex = new RegExp(`\\b${phrase}\\b`);
     if (regex.test(spokenText)) {
-      signMap[key].forEach(file => {
-        const img = document.createElement("img");
-        img.src = `signs/${file}`;
-        img.alt = key;
-        output.appendChild(img);
+      mapPhrases[phrase].forEach(file => {
+        appendGif(file, phrase);
       });
-      spokenText = spokenText.replace(regex, "");
+      // Remove the matched phrase from the spoken text
+      spokenText = spokenText.replace(regex, "").trim();
+      matched = true;
+    }
+  }
+
+  // Split the rest into words and match individually
+  const words = spokenText.split(/\s+/);
+  words.forEach(word => {
+    if (mapWords[word]) {
+      appendGif(mapWords[word], word);
       matched = true;
     }
   });
@@ -51,20 +77,10 @@ function showSigns(spokenText) {
   }
 }
 
-// Press to speak
-speakBtn.addEventListener("click", () => {
-  transcript.textContent = "🎙️ Listening...";
-  recognition.start();
-});
-
-// On successful recognition
-recognition.onresult = function (event) {
-  const speech = event.results[0][0].transcript.toLowerCase();
-  transcript.textContent = `You said: "${speech}"`;
-  showSigns(speech);
-};
-
-// On error
-recognition.onerror = function (event) {
-  transcript.textContent = `❌ Error: ${event.error}`;
-};
+// Helper: Create and insert image
+function appendGif(filename, altText) {
+  const img = document.createElement("img");
+  img.src = `signs/${filename}`;
+  img.alt = altText;
+  output.appendChild(img);
+}
