@@ -1,0 +1,14 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background: #f4f4f4;
+  padding: 2rem;
+}
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+#sign-output img {
+  height: 150px;
+  margin: 0.5rem;
+}
